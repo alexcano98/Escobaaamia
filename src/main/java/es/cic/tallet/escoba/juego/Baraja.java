@@ -35,12 +35,10 @@ public class Baraja {
 		mano.setCarta1(getCarta());
 		mano.setCarta2(getCarta());
 		mano.setCarta3(getCarta());
-	
 		return mano;
 	}
 	
 	private Carta getCarta() {
-		
 		Carta carta = listaCartas.remove(0);
 		return carta;		
 	}
