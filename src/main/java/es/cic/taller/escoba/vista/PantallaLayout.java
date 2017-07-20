@@ -4,12 +4,18 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.VerticalLayout;
 
+import es.cic.tallet.escoba.juego.Mano;
+import es.cic.tallet.escoba.juego.Ronda;
+
 public class PantallaLayout extends GridLayout {
 	
 	private ManoForm manoFormJugador1;
 	private ManoForm manoFormJugador2;
 	private EscobasForm escobasFormJugador1;
 	private EscobasForm escobasFormJugador2;
+	private Ronda ronda = new Ronda();
+	private Mano mano1 = new Mano();
+	private Mano mano2 = new Mano();
 	
 	private MyUI myUI;
 	
@@ -19,10 +25,13 @@ public class PantallaLayout extends GridLayout {
 	
 	public PantallaLayout(MyUI myUI) {
 		this.myUI = myUI;
+	
 		
-		manoFormJugador1 = new ManoForm();
-		manoFormJugador2 = new ManoForm();
-		mesa = new MesaForm();
+		
+		manoFormJugador1 = new ManoForm(mano1);
+		manoFormJugador2 = new ManoForm(mano2);
+		
+		mesa = new MesaForm(ronda);
 		
 		setRows(3);
 		setColumns(2);

@@ -14,23 +14,30 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 
 import es.cic.tallet.escoba.juego.Carta;
-import es.cic.tallet.escoba.juego.Mesa;
+
+import es.cic.tallet.escoba.juego.Ronda;
 
 public class MesaForm extends FormLayout {
 
 	
 	private List<Image> imagenes;	
-	private Mesa mesa;
 	
 	private HorizontalLayout cartas = new HorizontalLayout();
 	
-	public MesaForm() {
+	public MesaForm(Ronda ronda) {
+		List<Carta> cartas = ronda.getCartasMedio();
+		for( Carta carta : cartas) {
+			Image imagen = carta.getImagen();
+			imagen.setWidth("100px");
+			imagen.setHeight("200px");
+			imagenes.add(imagen);
+		}
 		
 		for( Image imagen: imagenes) {
 			imagen.addClickListener(new Seleccion());
-			cartas.addComponent(imagen);
+			this.cartas.addComponent(imagen);
 		}
-		addComponents(cartas);
+		addComponents(this.cartas);
 		this.setSizeFull();
 	
 	}	
@@ -42,14 +49,7 @@ public class MesaForm extends FormLayout {
 		
 	}
 	
-	public void setMano(List<Carta> cartas) {
-		for( Carta carta : cartas) {
-			Image imagen = carta.getImagen();
-			imagen.setWidth("100px");
-			imagen.setHeight("200px");
-			imagenes.add(imagen);
-		}
-	}
+	
 	
 	private Carta getCartaImagen(Component componente) {
 		Carta carta = null;

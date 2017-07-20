@@ -24,8 +24,9 @@ public class ManoForm extends FormLayout {
 	
 	private Mano mano;
 	
-	public ManoForm() {
-		
+	public ManoForm(Mano mano) {
+			
+			this.mano = mano;
 			cartas.addComponents(imagen1,imagen2,imagen3);
 			imagen1.addClickListener(new Seleccion());
 			imagen2.addClickListener(new Seleccion());

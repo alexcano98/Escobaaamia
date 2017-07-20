@@ -1,16 +1,17 @@
 package es.cic.tallet.escoba.juego;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Ronda {
-	Mano mano1;
-	Mano mano2;
+	private Mano mano1;
+	private Mano mano2;
 	
 	
-	ArrayList<Carta> medio = new ArrayList<Carta>();
+	private ArrayList<Carta> medio = new ArrayList<Carta>();
 	
-	ArrayList<Carta> jug1= new ArrayList<Carta>();
-	ArrayList<Carta> jug2= new ArrayList<Carta>();
+	private ArrayList<Carta> jug1= new ArrayList<Carta>();
+	private ArrayList<Carta> jug2= new ArrayList<Carta>();
 	
 	private Baraja baraja= new Baraja();
 	
@@ -61,8 +62,8 @@ public class Ronda {
 		mano2.eliminar(carta);
 	}
 	
-	public Carta[] getCartasMedio() {
-		return medio.toArray(new Carta[0]);
+	public List<Carta> getCartasMedio() {
+		return medio;
 	}
 	
 }
