@@ -13,6 +13,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 
 import es.cic.tallet.escoba.juego.Carta;
+import es.cic.tallet.escoba.juego.Mano;
 
 public class ManoForm extends FormLayout {
 	private HorizontalLayout cartas = new HorizontalLayout();
@@ -34,15 +35,15 @@ public class ManoForm extends FormLayout {
 			this.setSizeFull();
 		
 	}
-	private Resource getImageResource(String recurso) {
-		String basepath = VaadinService.getCurrent()
-                .getBaseDirectory().getAbsolutePath();
-		FileResource resource = new FileResource(new File(basepath +
-                "/images/" + recurso));
-        return resource;
+	public void setMano() {
+		
+		cargaCarta(mano.getCarta1(), imagen1);
+		cargaCarta(mano.getCarta2(), imagen2);
+		cargaCarta(mano.getCarta3(), imagen3);
+		
 	}	
 	private void cargaCarta(Carta carta, Image imagen) {
-		imagen.setSource(getImageResource(carta.getNombreFichero()));
+		imagen.setSource(carta.getImagen().getSource());
 		imagen.setWidth("100px");
 		imagen.setHeight("200px");
 	}
@@ -79,7 +80,21 @@ public class ManoForm extends FormLayout {
 		public void click(ClickEvent event) {
 			
 		}
-
-		
 	}
+		
+		
+		private void estableceCartaSeleccionada(Component componente) {
+			Carta carta = getCartaImagen(componente);
+			
+			boolean seleccionada = isCartaSeleccionada(carta);
+			
+			estableceSeleccionado(componente, seleccionada);
+		}
+
+		private boolean isCartaSeleccionada(Carta carta) {
+			//return mano.getSeleccionada() = carta;
+			return false;
+	}
+
 }
+

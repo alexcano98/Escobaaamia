@@ -33,6 +33,7 @@ public class MyUI extends UI {
          pestaña.addStyleName(ValoTheme.TABSHEET_PADDED_TABBAR);
          
          pestaña.addTab(pantalla);
+         setContent(pestaña);
     	
     }
 
