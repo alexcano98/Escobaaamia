@@ -6,7 +6,6 @@ public class Ronda {
 	Mano mano1;
 	Mano mano2;
 	
-
 	
 	ArrayList<Carta> medio = new ArrayList<Carta>();
 	
@@ -36,11 +35,10 @@ public class Ronda {
 	
 	
 	public boolean anhadeCartajug1(ArrayList<Carta> seleccionadas) {
-		if(Mano.puedeSumarCarta(seleccionadas)) {
-			
-			
+		
+		if(Mano.puedeSumarCarta(seleccionadas)){
+			mano1.eliminar(mano1.estaEnLaMano(seleccionadas));
 			medio.removeAll(seleccionadas);
-			
 			return jug1.addAll(seleccionadas);
 		}
 		return false;
@@ -49,10 +47,22 @@ public class Ronda {
 	
 	public boolean anhadeCartajug2(ArrayList<Carta> seleccionadas) {
 		if(Mano.puedeSumarCarta(seleccionadas)) {
+			mano2.eliminar(mano2.estaEnLaMano(seleccionadas));
+			medio.removeAll(seleccionadas);
 			return jug2.addAll(seleccionadas);
 		}
 		return false;
 		
+	}
+	
+	public void tiraCarta(Carta carta) {
+		medio.add(carta);
+		mano1.eliminar(carta);
+		mano2.eliminar(carta);
+	}
+	
+	public Carta[] getCartasMedio() {
+		return medio.toArray(new Carta[0]);
 	}
 	
 }

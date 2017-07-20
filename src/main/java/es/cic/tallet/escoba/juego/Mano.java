@@ -41,6 +41,7 @@ public class Mano {
 		return carta1==carta || carta2==carta || carta3== carta;
 	}
 	
+	
 	public Carta estaEnLaMano(ArrayList <Carta> cartas) {
 		for(Carta c: cartas) {
 			if(estaEnLaMano(c)) {
@@ -58,6 +59,20 @@ public class Mano {
 		}
 		return num==15;
 
+	}
+	public void eliminar(Carta carta) {
+		if(carta== carta1)setCarta1(null);
+		if(carta== carta2)setCarta2(null);
+		if(carta== carta3)setCarta3(null);
+	}
+	
+	
+	public boolean puedeRepartir() {
+		if(carta1==null && carta2 ==null && carta3== null) {
+			return true;
+		}
+		return false;
+		
 	}
 	
 	
