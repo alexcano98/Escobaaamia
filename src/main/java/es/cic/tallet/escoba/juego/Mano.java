@@ -36,17 +36,30 @@ public class Mano {
 	public void setJugador(Jugador jugador) {
 		this.jugador=jugador;
 	}
+	
+	public boolean estaEnLaMano(Carta carta) {
+		return carta1==carta || carta2==carta || carta3== carta;
+	}
+	
+	public Carta estaEnLaMano(ArrayList <Carta> cartas) {
+		for(Carta c: cartas) {
+			if(estaEnLaMano(c)) {
+				return c;
+			}
+		}
+		return null;
+	}
 
 
-	public static boolean sumaCarta(ArrayList <Carta> seleccionadas) {
+	public static boolean puedeSumarCarta(ArrayList <Carta> seleccionadas) {
 		int num = 0;
 		for(Carta c: seleccionadas) {
 			num=num+c.getNumero();
-			
 		}
 		return num==15;
 
 	}
+	
 	
 
 

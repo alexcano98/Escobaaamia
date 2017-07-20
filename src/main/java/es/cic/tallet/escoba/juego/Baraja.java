@@ -1,3 +1,4 @@
+
 package es.cic.tallet.escoba.juego;
 
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class Baraja {
 		return mano;
 	}
 	
-	private Carta getCarta() {
+	public Carta getCarta() {
 		Carta carta = listaCartas.remove(0);
 		return carta;		
 	}

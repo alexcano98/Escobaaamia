@@ -4,6 +4,7 @@ public class Jugador {
 	private String nombre;
 	private Mano manoActual;
 	
+	
 	public Jugador(String nombre) {
 		this.nombre = nombre;
 	}
@@ -16,5 +17,8 @@ public class Jugador {
 	public void setManoActual(Mano manoActual) {
 		this.manoActual = manoActual;
 	}
+	
+	
+	
 	
 }
