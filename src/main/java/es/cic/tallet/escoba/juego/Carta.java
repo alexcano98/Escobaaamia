@@ -35,7 +35,7 @@ public class Carta {
 
 		imagen.setSource(resource);
 		imagen.setWidth("100px");
-		imagen.setHeight("100px");
+		imagen.setHeight("200px");
 	}
 	
 	public Image getImagen() {

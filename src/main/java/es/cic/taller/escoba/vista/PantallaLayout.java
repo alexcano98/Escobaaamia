@@ -38,8 +38,8 @@ public class PantallaLayout extends GridLayout {
 		
 		addComponent(manoFormJugador1,0,0);
 		addComponent(manoFormJugador2,0,2);
-		addComponent(escobasFormJugador1,1,0);
-		addComponent(escobasFormJugador2,1,2);
+		/*addComponent(escobasFormJugador1,1,0);  // Error: establece valores nulos que no se pueden colocar (Solucionar)
+		addComponent(escobasFormJugador2,1,2);*/
 		addComponent(mesa,0,1);
 		
 		VerticalLayout acciones = new VerticalLayout();

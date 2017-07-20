@@ -1,13 +1,12 @@
 package es.cic.taller.escoba.vista;
 
-import java.io.File;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import com.vaadin.event.MouseEvents.ClickEvent;
 import com.vaadin.event.MouseEvents.ClickListener;
-import com.vaadin.server.FileResource;
-import com.vaadin.server.Resource;
-import com.vaadin.server.VaadinService;
+
 import com.vaadin.ui.Component;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -20,16 +19,15 @@ import es.cic.tallet.escoba.juego.Ronda;
 public class MesaForm extends FormLayout {
 
 	
-	private List<Image> imagenes;	
+	private List<Image> imagenes;
 	
 	private HorizontalLayout cartas = new HorizontalLayout();
 	
 	public MesaForm(Ronda ronda) {
+		imagenes = new ArrayList<Image>();
 		List<Carta> cartas = ronda.getCartasMedio();
 		for( Carta carta : cartas) {
 			Image imagen = carta.getImagen();
-			imagen.setWidth("100px");
-			imagen.setHeight("200px");
 			imagenes.add(imagen);
 		}
 		
@@ -55,8 +53,7 @@ public class MesaForm extends FormLayout {
 		Carta carta = null;
 		for( Image imagen: imagenes) {
 			if(componente == imagen) {
-				// aqui se debe llamar a la clase Mesa que va a retornar con un metodo el objeto carta que coincida en 
-				// el array de cartas de la clase Mesa con el indice de la imagen
+				// Aqui se debe conseguir el objeto carta que corresponde con el componente
 			}
 		}
 		return carta;
@@ -65,7 +62,7 @@ public class MesaForm extends FormLayout {
 	
 	private void estableceSeleccionado(Component componente, boolean seleccionado) {
 		if (!seleccionado) {
-			componente.setWidth("100px");
+			componente.setWidth("100x");
 			componente.setHeight("200px");
 		} else {
 			componente.setWidth("200px");
@@ -85,15 +82,15 @@ public class MesaForm extends FormLayout {
 		
 	}
 	
-	private void estableceDescartadaImagen(Component componente) {
+	private void estableceSeleccionadaImagen(Component componente) {
 		Carta carta = getCartaImagen(componente);
 		
-		boolean descartada = isCartaDescartada(carta);
+		boolean descartada = isCartaSeleccionada(carta);
 		
 		estableceSeleccionado(componente, descartada);
 	}
 
-	private boolean isCartaDescartada(Carta carta) {
+	private boolean isCartaSeleccionada(Carta carta) {
 		//return mano.getListaDescartadas().contains(carta);
 		return false;
 }

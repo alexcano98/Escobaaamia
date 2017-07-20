@@ -11,18 +11,15 @@ import com.vaadin.ui.Image;
 import com.vaadin.ui.VerticalLayout;
 
 public class EscobasForm extends GridLayout {
-	
-	
-	
-	
+
 	public EscobasForm() {
-		setRows(4);
-		setColumns(4);
-		
+		setRows(1);
+		setColumns(1);
+		añadeEscoba();
 		
 	}
 	
-	public void añadeEscoba() {
+	private void añadeEscoba() {
 		Image imagen = new Image();
 		imagen.setSource(getImageResource("circle.png"));
 		imagen.setWidth("50px");

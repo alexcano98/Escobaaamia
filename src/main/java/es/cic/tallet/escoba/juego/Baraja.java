@@ -15,9 +15,9 @@ public class Baraja {
 	}
 	
 	public void generaBaraja() {
-		for(int i=0; i<=10;i++) {
+		for(int i=1; i<=10;i++) {
 			listaCartas.add(new Carta(i,"ORO"));
-			listaCartas.add(new Carta(i,"COPAS"));
+			listaCartas.add(new Carta(i,"COPA"));
 			listaCartas.add(new Carta(i,"ESPADAS"));
 			listaCartas.add(new Carta(i,"BASTOS"));
 		}
@@ -43,4 +43,6 @@ public class Baraja {
 		Carta carta = listaCartas.remove(0);
 		return carta;		
 	}
+	
+	
 }
