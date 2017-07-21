@@ -44,5 +44,9 @@ public class Baraja {
 		return carta;		
 	}
 	
+	public boolean quedanCartas() {
+		return listaCartas.size()>0;
+	}
+	
 	
 }

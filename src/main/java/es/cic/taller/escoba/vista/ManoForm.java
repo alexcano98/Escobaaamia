@@ -28,10 +28,12 @@ public class ManoForm extends FormLayout {
 			
 			this.mano = mano;
 			cartas.addComponents(imagen1,imagen2,imagen3);
+			
 			imagen1.addClickListener(new Seleccion());
 			imagen2.addClickListener(new Seleccion());
 			imagen3.addClickListener(new Seleccion());
 			
+			setMano();
 			addComponents(cartas);
 			this.setSizeFull();
 		
@@ -79,23 +81,24 @@ public class ManoForm extends FormLayout {
 
 		@Override
 		public void click(ClickEvent event) {
-
-			Component componente = event.getComponent();
-			Carta carta = getCartaImagen(componente);
 			
-			boolean seleccionada = carta.isSeleccionada();
-			boolean seleccionar = !seleccionada;
 			
-			if (seleccionar && mano.sePuedeSeleccionarCarta()) {
-				carta.setSeleccionada(seleccionar);
-			} else {
-				carta.setSeleccionada(seleccionar);
-			}
-			
-			estableceSeleccionado(componente, seleccionar);
-}
+		}
 	}
 		
+		
+		private void estableceCartaSeleccionada(Component componente) {
+			Carta carta = getCartaImagen(componente);
+			
+			boolean seleccionada = isCartaSeleccionada(carta);
+			
+			estableceSeleccionado(componente, seleccionada);
+		}
+
+		private boolean isCartaSeleccionada(Carta carta) {
+			//return mano.getSeleccionada() = carta;
+			return false;
+	}
 
 }
 
