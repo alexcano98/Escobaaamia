@@ -22,8 +22,11 @@ public class MesaForm extends FormLayout {
 	private List<Image> imagenes;
 	
 	private HorizontalLayout cartas = new HorizontalLayout();
+	private Ronda ronda;
+	
 	
 	public MesaForm(Ronda ronda) {
+		this.ronda = ronda;
 		imagenes = new ArrayList<Image>();
 		List<Carta> cartas = ronda.getCartasMedio();
 		for( Carta carta : cartas) {
@@ -77,17 +80,31 @@ public class MesaForm extends FormLayout {
 		@Override
 		public void click(ClickEvent event) {
 			
+			Component componente = event.getComponent();
+			Carta carta = getCartaImagen(componente);
+			
+			boolean seleccionada = isCartaSeleccionada(carta);
+			boolean seleccionar = !seleccionada;
+			
+			if (seleccionar) {
+				ronda.getListaSeleccionadas().add(carta);
+			} else {
+				ronda.getListaSeleccionadas().remove(carta);
+			}
+			
+			estableceSeleccionado(componente, seleccionar);
+}
 		}
 
 		
-	}
+	
 	
 	private void estableceSeleccionadaImagen(Component componente) {
 		Carta carta = getCartaImagen(componente);
 		
-		boolean descartada = isCartaSeleccionada(carta);
+		boolean seleccionada = isCartaSeleccionada(carta);
 		
-		estableceSeleccionado(componente, descartada);
+		estableceSeleccionado(componente, seleccionada);
 	}
 
 	private boolean isCartaSeleccionada(Carta carta) {

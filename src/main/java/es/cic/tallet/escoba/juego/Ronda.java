@@ -7,7 +7,7 @@ public class Ronda {
 	private Mano mano1;
 	private Mano mano2;
 	
-	
+	private ArrayList<Carta> seleccionadas = new ArrayList<Carta>();
 	private ArrayList<Carta> medio = new ArrayList<Carta>();
 	
 	private ArrayList<Carta> jug1= new ArrayList<Carta>();
@@ -65,5 +65,7 @@ public class Ronda {
 	public List<Carta> getCartasMedio() {
 		return medio;
 	}
-	
+	public List<Carta> getListaSeleccionadas(){
+	 	return seleccionadas;
+	}
 }

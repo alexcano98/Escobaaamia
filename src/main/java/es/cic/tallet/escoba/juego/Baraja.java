@@ -16,10 +16,10 @@ public class Baraja {
 	
 	public void generaBaraja() {
 		for(int i=1; i<=10;i++) {
-			listaCartas.add(new Carta(i,"ORO"));
-			listaCartas.add(new Carta(i,"COPA"));
-			listaCartas.add(new Carta(i,"ESPADAS"));
-			listaCartas.add(new Carta(i,"BASTOS"));
+			listaCartas.add(new Carta(i,"ORO.png"));
+			listaCartas.add(new Carta(i,"COPA.png"));
+			listaCartas.add(new Carta(i,"ESPADAS.png"));
+			listaCartas.add(new Carta(i,"BASTOS.png"));
 		}
 	
 		Collections.shuffle(listaCartas);
