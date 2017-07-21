@@ -108,8 +108,8 @@ public class MesaForm extends FormLayout {
 	}
 
 	private boolean isCartaSeleccionada(Carta carta) {
-		//return mano.getListaDescartadas().contains(carta);
-		return false;
+		
+		return ronda.getListaSeleccionadas().contains(carta);
 }
 	
 	
