@@ -96,16 +96,6 @@ public class MesaForm extends FormLayout {
 }
 		}
 
-		
-	
-	
-	private void estableceSeleccionadaImagen(Component componente) {
-		Carta carta = getCartaImagen(componente);
-		
-		boolean seleccionada = isCartaSeleccionada(carta);
-		
-		estableceSeleccionado(componente, seleccionada);
-	}
 
 	private boolean isCartaSeleccionada(Carta carta) {
 		

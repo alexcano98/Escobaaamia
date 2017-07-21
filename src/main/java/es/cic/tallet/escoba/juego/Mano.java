@@ -7,7 +7,9 @@ public class Mano {
 	private Carta carta1;
 	private Carta carta2;
 	private Carta carta3;
-	Jugador jugador;
+	private Jugador jugador;
+	
+	
 
 	public Carta getCarta1() {
 		return carta1;
@@ -29,6 +31,7 @@ public class Mano {
 	public void setCarta3(Carta carta3) {
 		this.carta3 = carta3;
 	}
+	
 	public Jugador getJugador() {
 		return jugador;
 	}
@@ -73,6 +76,20 @@ public class Mano {
 		}
 		return false;
 		
+	}
+	public boolean sePuedeSeleccionarCarta() {
+		boolean seleccionada= true;
+		if(carta1.isSeleccionada()==true)seleccionada=false;
+		if(carta2.isSeleccionada()==true)seleccionada=false;
+		if(carta3.isSeleccionada()==true)seleccionada=false;
+		return seleccionada;
+	}
+	
+	public Carta getSeleccionada() {
+		if(carta1.isSeleccionada()==true)return carta1;
+		if(carta2.isSeleccionada()==true)return carta2;
+		if(carta3.isSeleccionada()==true)return carta3;
+		return null;
 	}
 	
 	

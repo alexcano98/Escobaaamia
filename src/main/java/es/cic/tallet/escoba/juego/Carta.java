@@ -9,7 +9,8 @@ import com.vaadin.ui.Image;
 public class Carta {
 	private String palo;
 	private int numero;
-	Image imagen= new Image();
+	private Image imagen= new Image();
+	private boolean seleccionada;
 
 	public Carta(int numero,String palo) {
 		this.numero= numero;
@@ -40,6 +41,14 @@ public class Carta {
 	
 	public Image getImagen() {
 		return imagen;
+	}
+
+	public boolean isSeleccionada() {
+		return seleccionada;
+	}
+
+	public void setSeleccionada(boolean seleccionada) {
+		this.seleccionada = seleccionada;
 	}
 
 

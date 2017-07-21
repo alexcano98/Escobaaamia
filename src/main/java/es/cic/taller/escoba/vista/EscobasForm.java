@@ -5,10 +5,10 @@ import java.io.File;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.Resource;
 import com.vaadin.server.VaadinService;
-import com.vaadin.ui.FormLayout;
+
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Image;
-import com.vaadin.ui.VerticalLayout;
+
 
 public class EscobasForm extends GridLayout {
 
