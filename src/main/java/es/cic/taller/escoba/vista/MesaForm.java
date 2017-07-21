@@ -65,7 +65,7 @@ public class MesaForm extends FormLayout {
 	
 	private void estableceSeleccionado(Component componente, boolean seleccionado) {
 		if (!seleccionado) {
-			componente.setWidth("100x");
+			componente.setWidth("100px");
 			componente.setHeight("200px");
 		} else {
 			componente.setWidth("200px");
@@ -93,7 +93,7 @@ public class MesaForm extends FormLayout {
 			}
 			
 			estableceSeleccionado(componente, seleccionar);
-}
+		}
 		}
 
 		
@@ -108,9 +108,9 @@ public class MesaForm extends FormLayout {
 	}
 
 	private boolean isCartaSeleccionada(Carta carta) {
-		
+
 		return ronda.getListaSeleccionadas().contains(carta);
-}
+	}
 	
 	
 	
