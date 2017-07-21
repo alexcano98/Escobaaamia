@@ -14,8 +14,8 @@ public class PantallaLayout extends GridLayout {
 	private EscobasForm escobasFormJugador1;
 	private EscobasForm escobasFormJugador2;
 	private Ronda ronda = new Ronda();
-	private Mano mano1 = new Mano();
-	private Mano mano2 = new Mano();
+	private Mano mano1 = ronda.getMano1();
+	private Mano mano2 = ronda.getMano2();
 	
 	private MyUI myUI;
 	
