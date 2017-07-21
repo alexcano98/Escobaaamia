@@ -28,10 +28,12 @@ public class ManoForm extends FormLayout {
 			
 			this.mano = mano;
 			cartas.addComponents(imagen1,imagen2,imagen3);
+			
 			imagen1.addClickListener(new Seleccion());
 			imagen2.addClickListener(new Seleccion());
 			imagen3.addClickListener(new Seleccion());
 			
+			setMano();
 			addComponents(cartas);
 			this.setSizeFull();
 		
@@ -79,6 +81,7 @@ public class ManoForm extends FormLayout {
 
 		@Override
 		public void click(ClickEvent event) {
+			
 			
 		}
 	}
