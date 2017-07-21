@@ -56,12 +56,6 @@ public class Ronda {
 
 	}
 
-	public void tiraCarta(Carta carta) {
-		medio.add(carta);
-		mano1.eliminar(carta);
-		mano2.eliminar(carta);
-	}
-
 	public List<Carta> getCartasMedio() {
 		return medio;
 	}

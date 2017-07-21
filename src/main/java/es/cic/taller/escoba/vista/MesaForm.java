@@ -42,8 +42,10 @@ public class MesaForm extends FormLayout {
 		this.setSizeFull();
 	
 	}	
-	private void añadeImagen() {
-		
+	public void añadeImagen(Carta carta) {
+		imagenes.add(carta.getImagen());
+		imagenes.get(imagenes.size()-1).addClickListener(new Seleccion());
+		this.cartas.addComponent(carta.getImagen());
 	}
 	
 	private void eliminaImagen() {

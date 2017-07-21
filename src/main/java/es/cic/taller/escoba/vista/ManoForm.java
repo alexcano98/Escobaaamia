@@ -38,6 +38,11 @@ public class ManoForm extends FormLayout {
 			this.setSizeFull();
 		
 	}
+	
+	public void eliminaCarta(Carta carta) {
+		cartas.removeComponent(carta.getImagen());
+		mano.eliminar(carta);
+	}
 	public void setMano() {
 		
 		cargaCarta(mano.getCarta1(), imagen1);
@@ -104,9 +109,12 @@ public class ManoForm extends FormLayout {
 		
 
 		private boolean isCartaSeleccionada(Carta carta) {
-			//return mano.getSeleccionada() = carta;
-			return false;
+			return   carta == mano.getSeleccionada();
+			
 	}
+		public Mano getMano() {
+			return mano;
+		}
 
 }
 
