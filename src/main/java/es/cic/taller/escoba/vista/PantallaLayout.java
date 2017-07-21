@@ -56,11 +56,4 @@ public class PantallaLayout extends GridLayout {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
 }

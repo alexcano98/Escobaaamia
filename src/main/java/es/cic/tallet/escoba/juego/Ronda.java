@@ -75,5 +75,13 @@ public class Ronda {
 	public Mano getMano2() {
 		return mano2;
 
-}
+	}
+	public boolean puedeSumarCarta(Mano mano) {
+		int num = mano.getSeleccionada().getNumero();
+		for(Carta c: seleccionadas) {
+			num=num+c.getNumero();
+		}
+		return num==15;
+
+	}
 }
