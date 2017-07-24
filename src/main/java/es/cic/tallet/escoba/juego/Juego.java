@@ -12,11 +12,11 @@ public class Juego {
 		return puntuacionJugador1 == PUNTUACION_MAXIMA || puntuacionJugador2== PUNTUACION_MAXIMA;
 	}
 
-	public int getpuntuacionJugador1() {
+	public int getPuntuacionJugador1() {
 		return puntuacionJugador1;
 	}
-	public void setPuntuacionEquipo1(int puntuacionEquipo1) {
-		this.puntuacionJugador1 += puntuacionJugador1;
+	public void sumaPuntuacionJugador1(int puntuacionEquipo1) {
+		this.puntuacionJugador1 = this.puntuacionJugador1+ puntuacionEquipo1;
 	}
 	public int getPuntuacionJugador2() {
 		return puntuacionJugador2;

@@ -14,7 +14,7 @@ public class Ronda {
 	private ArrayList<Carta> jug2= new ArrayList<Carta>();
 
 	private Baraja baraja= new Baraja();
-
+	private Juego juego=new Juego();
 	public Ronda() {
 
 		reparteMano();	
@@ -77,5 +77,84 @@ public class Ronda {
 		}
 		return num==15;
 
+	}
+	public int orosJ1() {
+		int oros=0;
+		for(int i=0; i<jug1.size();i++) {
+			if(jug1.get(i).getPalo().equals("ORO")) {
+				oros++;
+			}
+		}
+		return oros;
+	}
+	public int orosJ2() {
+		int oros=0;
+		for(int i=0; i<jug2.size();i++) {
+			if(jug2.get(i).getPalo().equals("ORO")) {
+				oros++;
+			}
+		}
+		return oros;
+	}
+	
+	public int sietesJ1() {
+		int sietes=0;
+		for(int i=0; i<jug1.size();i++) {
+			if(jug1.get(i).getNumero()==7) {
+				sietes++;
+			}
+		}
+		return sietes;
+	}
+	public int sietesJ2() {
+		int sietes=0;
+		for(int i=0; i<jug2.size();i++) {
+			if(jug2.get(i).getNumero()==7) {
+				sietes++;
+			}
+		}
+		return sietes;
+	}
+	public boolean sieteOroJ1() {
+		for(int i=0; i<jug1.size();i++) {
+			if(jug1.get(i).getNumero()==7&&jug1.get(i).getPalo().equals("ORO")) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void sumaPuntos() {
+		int puntJ1=0;
+		int puntJ2=0;
+		if(jug1.size()>jug2.size()) {
+			puntJ1++;
+		}else {
+			if(jug1.size()<jug2.size()) {
+				puntJ2++;
+			}
+		}
+		if(orosJ1()>orosJ2()) {
+			puntJ1++;
+		}else {
+			if(orosJ1()<orosJ2()) {
+				puntJ2++;
+			}
+		}
+		if(sietesJ1()>sietesJ2()) {
+			puntJ1++;
+		}else {
+			if(sietesJ1()<sietesJ2()) {
+				puntJ2++;
+			}
+		}
+		if(sieteOroJ1()) {
+			puntJ1++;
+		}else {
+			puntJ2++;
+		}
+		juego.sumaPuntuacionJugador1(puntJ1);
+		juego.sumaPuntuacionJugador2(puntJ2);
+		
 	}
 }
