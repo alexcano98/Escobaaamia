@@ -175,4 +175,16 @@ public class Ronda {
 		juego.sumaPuntuacionJugador2(puntJ2);
 		
 	}
+	public boolean hayEscoba() {
+		if(medio.size()==0) {
+			return true;
+		}
+		return false;
+	}
+	public void sumaEscobaJ1() {
+		juego.sumaPuntuacionJugador1(1);
+	}
+	public void sumaEscobaJ2() {
+		juego.sumaPuntuacionJugador2(1);
+	}
 }
