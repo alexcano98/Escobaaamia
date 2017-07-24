@@ -40,9 +40,25 @@ public class ManoForm extends FormLayout {
 	}
 	
 	public void eliminaCarta(Carta carta) {
-		cartas.removeComponent(carta.getImagen());
-		mano.eliminar(carta);
+		estableceDeseleccionado(carta);
+		this.cartas.getComponent(getIndexImagen(carta)).setVisible(false);
+		this.cartas.removeComponent(carta.getImagen());
+		PantallaLayout.getSoltar().setEnabled(false);
+	    
 	}
+	private int getIndexImagen(Carta carta) {
+		int index=-1;
+		
+		if (carta == mano.getCarta1()) {	
+			index = 0;
+		} else if (carta == mano.getCarta2()) {
+			index = 1;
+		} else if (carta == mano.getCarta3()) {
+			index = 2;
+		}
+		return index;
+	}
+	
 	public void setMano() {
 		
 		cargaCarta(mano.getCarta1(), imagen1);
@@ -100,8 +116,10 @@ public class ManoForm extends FormLayout {
 			boolean seleccionar = !seleccionada;
 			if (seleccionar && mano.sePuedeSeleccionarCarta()) {
 								carta.setSeleccionada(seleccionar);
+								PantallaLayout.getSoltar().setEnabled(true);
 							} else {
 								carta.setSeleccionada(false);
+								PantallaLayout.getSoltar().setEnabled(false);
 							}
 							
 							estableceSeleccionado(componente, carta.isSeleccionada());
@@ -115,6 +133,14 @@ public class ManoForm extends FormLayout {
 		public Mano getMano() {
 			return mano;
 		}
+		
+		private void estableceDeseleccionado(Carta carta) {
+			carta.getImagen().setWidth("100px");
+			carta.getImagen().setHeight("200px");
+			mano.getSeleccionada().setSeleccionada(false);
+			
+		}
+		
 
 }
 

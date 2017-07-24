@@ -10,6 +10,8 @@ import es.cic.tallet.escoba.juego.Ronda;
 
 public class PantallaLayout extends GridLayout {
 	
+	
+
 	private ManoForm manoFormJ1;
 	private ManoForm manoFormJ2;
 	private EscobasForm escobasFormJugador1;
@@ -21,8 +23,8 @@ public class PantallaLayout extends GridLayout {
 	private MyUI myUI;
 	
 	private MesaForm mesa;
-	private Button recojer = new Button("Recojer");
-	private Button soltar = new Button("Soltar");
+	private static Button recojer = new Button("Recojer");
+	private static Button soltar = new Button("Soltar");
 	
 	public PantallaLayout(MyUI myUI) {
 		this.myUI = myUI;
@@ -49,24 +51,45 @@ public class PantallaLayout extends GridLayout {
 		
 		recojer.setEnabled(false);
 		soltar.setEnabled(false);
+		soltar.addClickListener(e ->{
+			Carta carta = manoFormJ1.getMano().getSeleccionada();
+			if(null != carta) {
+				manoFormJ1.eliminaCarta(carta);
+				mesa.añadeImagen(carta);
+			}
+	});
 		
 		addComponent(acciones,1,1);
-		tirarCarta(manoFormJ1);
+		
 		
 	}
 	
-	private void tirarCarta(ManoForm manoFormJ1) {
-		boolean isSeleccionado = !manoFormJ1.getMano().sePuedeSeleccionarCarta();
-		if(isSeleccionado) {
-			soltar.setEnabled(true);
-			soltar.addClickListener(e ->{
-				Carta carta = manoFormJ1.getMano().getSeleccionada();
-					if(null != carta) {
-						mesa.añadeImagen(carta);
-						manoFormJ1.eliminaCarta(carta);
-					}
-			});
-		}
+	
+	public ManoForm getManoFormJ1() {
+		return manoFormJ1;
+	}
+
+	public void setManoFormJ1(ManoForm manoFormJ1) {
+		this.manoFormJ1 = manoFormJ1;
+	}
+
+	public ManoForm getManoFormJ2() {
+		return manoFormJ2;
+	}
+
+	public void setManoFormJ2(ManoForm manoFormJ2) {
+		this.manoFormJ2 = manoFormJ2;
+	}
+
+	public MesaForm getMesa() {
+		return mesa;
+	}
+
+	public void setMesa(MesaForm mesa) {
+		this.mesa = mesa;
+	}
+	public static Button getSoltar() {
+		return soltar;
 	}
 }
 	
