@@ -9,7 +9,7 @@ import com.vaadin.ui.Image;
 public class Carta {
 	private String palo;
 	private int numero;
-	private Image imagen= new Image();
+	private FileResource imagen;
 	private boolean seleccionada;
 
 	public Carta(int numero,String palo) {
@@ -33,14 +33,15 @@ public class Carta {
 
 		FileResource resource = new FileResource(new File(basepath +
 				"/images/"+nomImagen));
-
-		imagen.setSource(resource);
-		imagen.setWidth("100px");
-		imagen.setHeight("200px");
+		imagen= resource;
 	}
 	
 	public Image getImagen() {
-		return imagen;
+		Image  i = new Image();
+		i.setSource(imagen);
+		i.setWidth("100px");
+		i.setHeight("200px");
+		return i;
 	}
 
 	public boolean isSeleccionada() {
