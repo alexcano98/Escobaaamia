@@ -24,6 +24,8 @@ public class Ronda {
 		reparteMano();	
 		daCartasAlMedio();
 		jugador1.setTurno(true);
+		jugador1.setManoActual(mano1);
+		jugador2.setManoActual(mano2);
 	}
 	public void cambiaTurno() {
 		boolean turno=jugador1.getTurno();
