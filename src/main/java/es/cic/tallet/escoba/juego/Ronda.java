@@ -15,6 +15,7 @@ public class Ronda {
 
 	private Baraja baraja= new Baraja();
 	private Juego juego=new Juego();
+	
 	public Ronda() {
 
 		reparteMano();	
@@ -32,8 +33,6 @@ public class Ronda {
 		mano1= baraja.getMano();
 		mano2= baraja.getMano();
 	}
-
-
 
 	public boolean anhadeCartajug1(ArrayList<Carta> seleccionadas) {
 
@@ -71,12 +70,14 @@ public class Ronda {
 
 	}
 	public boolean puedeSumarCarta(Mano mano) {
+		if(!mano.sePuedeSeleccionarCarta() && seleccionadas.size()!=0 ) {
 		int num = mano.getSeleccionada().getNumero();
 		for(Carta c: seleccionadas) {
 			num=num+c.getNumero();
 		}
 		return num==15;
-
+		}
+		return false;
 	}
 	public int orosJ1() {
 		int oros=0;

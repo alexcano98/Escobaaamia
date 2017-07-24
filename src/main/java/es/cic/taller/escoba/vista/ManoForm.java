@@ -117,6 +117,7 @@ public class ManoForm extends FormLayout {
 			if (seleccionar && mano.sePuedeSeleccionarCarta()) {
 								carta.setSeleccionada(seleccionar);
 								PantallaLayout.getSoltar().setEnabled(true);
+								
 							} else {
 								carta.setSeleccionada(false);
 								PantallaLayout.getSoltar().setEnabled(false);

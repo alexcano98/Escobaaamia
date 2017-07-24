@@ -52,12 +52,19 @@ public class PantallaLayout extends GridLayout {
 		recojer.setEnabled(false);
 		soltar.setEnabled(false);
 		soltar.addClickListener(e ->{
-			Carta carta = manoFormJ1.getMano().getSeleccionada();
-			if(null != carta) {
+				Carta carta = manoFormJ1.getMano().getSeleccionada();
 				manoFormJ1.eliminaCarta(carta);
 				mesa.añadeImagen(carta);
-			}
-	});
+
+		});
+		
+		recojer.addClickListener(e->{
+				Carta carta = manoFormJ1.getMano().getSeleccionada();
+				manoFormJ1.eliminaCarta(carta);
+				mesa.eliminaImagen(ronda.getListaSeleccionadas());
+			
+			
+		});
 		
 		addComponent(acciones,1,1);
 		
@@ -90,6 +97,9 @@ public class PantallaLayout extends GridLayout {
 	}
 	public static Button getSoltar() {
 		return soltar;
+	}
+	public static Button getRecojer() {
+		return recojer;
 	}
 }
 	

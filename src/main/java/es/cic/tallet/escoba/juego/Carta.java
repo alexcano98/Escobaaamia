@@ -32,7 +32,7 @@ public class Carta {
 				.getBaseDirectory().getAbsolutePath();
 
 		FileResource resource = new FileResource(new File(basepath +
-				"/images/"+nomImagen));
+				"/images/"+nomImagen+".png"));
 		imagen= resource;
 	}
 	

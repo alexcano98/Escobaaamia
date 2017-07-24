@@ -46,20 +46,38 @@ public class MesaForm extends FormLayout {
 		imagenes.add(carta.getImagen());
 		imagenes.get(imagenes.size()-1).addClickListener(new Seleccion());
 		this.cartas.addComponent(carta.getImagen());
+		ronda.getCartasMedio().add(carta);
 	}
 	
-	private void eliminaImagen() {
-		
+	public void eliminaImagen(List<Carta> seleccionadas) {
+		for( Carta c: seleccionadas) {
+			estableceDeseleccionado(c);
+			this.cartas.getComponent(getIndexImagen(c)).setVisible(false);
+			this.cartas.removeComponent(c.getImagen());
+			PantallaLayout.getRecojer().setEnabled(false);
+		}
 	}
-	
+	private int getIndexImagen(Carta carta) {
+		int index=0;
+		List<Carta> cartasMedio= ronda.getCartasMedio();
+		for(Carta c: cartasMedio) {
+			if(c == carta) {
+				return index;
+			}
+			index++;
+		}
+		return -1;
+	}
 	
 	
 	private Carta getCartaImagen(Component componente) {
 		Carta carta = null;
+		int i = 0;
 		for( Image imagen: imagenes) {
 			if(componente == imagen) {
-				// Aqui se debe conseguir el objeto carta que corresponde con el componente
+				carta = ronda.getCartasMedio().get(i);
 			}
+			i++;
 		}
 		return carta;
 	}
@@ -90,21 +108,36 @@ public class MesaForm extends FormLayout {
 			
 			if (seleccionar) {
 				ronda.getListaSeleccionadas().add(carta);
+				if(ronda.puedeSumarCarta(ronda.getMano1())) {
+					PantallaLayout.getRecojer().setEnabled(true);
+				}else {
+					PantallaLayout.getRecojer().setEnabled(false);
+				}
 			} else {
 				ronda.getListaSeleccionadas().remove(carta);
+				if(ronda.puedeSumarCarta(ronda.getMano1())) {
+					PantallaLayout.getRecojer().setEnabled(true);
+			}else {
+				PantallaLayout.getRecojer().setEnabled(false);
+				}
 			}
-			
 			estableceSeleccionado(componente, seleccionar);
 		}
-		}
+	}
 
 
 	private boolean isCartaSeleccionada(Carta carta) {
-
 		return ronda.getListaSeleccionadas().contains(carta);
 	}
 	
+	private void estableceDeseleccionado(Carta carta) {
+		carta.getImagen().setWidth("100px");
+		carta.getImagen().setHeight("200px");
+		List <Carta> seleccionadas = ronda.getListaSeleccionadas();
+		seleccionadas.get(seleccionadas.indexOf(carta)).setSeleccionada(false);
 	
+	
+	}
 	
 }
 
