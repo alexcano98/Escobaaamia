@@ -108,14 +108,14 @@ public class MesaForm extends FormLayout {
 			
 			if (seleccionar) {
 				ronda.getListaSeleccionadas().add(carta);
-				if(ronda.puedeSumarCarta(ronda.getMano1())) {
+				if(ronda.puedeSumarCarta(ronda.getJugadorActual().getManoActual())) {
 					PantallaLayout.getRecojer().setEnabled(true);
 				}else {
 					PantallaLayout.getRecojer().setEnabled(false);
 				}
 			} else {
 				ronda.getListaSeleccionadas().remove(carta);
-				if(ronda.puedeSumarCarta(ronda.getMano1())) {
+				if(ronda.puedeSumarCarta(ronda.getJugadorActual().getManoActual())) {
 					PantallaLayout.getRecojer().setEnabled(true);
 			}else {
 				PantallaLayout.getRecojer().setEnabled(false);

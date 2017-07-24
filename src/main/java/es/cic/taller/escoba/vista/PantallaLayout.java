@@ -52,17 +52,18 @@ public class PantallaLayout extends GridLayout {
 		recojer.setEnabled(false);
 		soltar.setEnabled(false);
 		soltar.addClickListener(e ->{
-				Carta carta = manoFormJ1.getMano().getSeleccionada();
+				Carta carta = ronda.getJugadorActual().getManoActual().getSeleccionada();
 				manoFormJ1.eliminaCarta(carta);
 				mesa.añadeImagen(carta);
+				ronda.cambiaTurno();
 
 		});
 		
 		recojer.addClickListener(e->{
-				Carta carta = manoFormJ1.getMano().getSeleccionada();
+				Carta carta = ronda.getJugadorActual().getManoActual().getSeleccionada();
 				manoFormJ1.eliminaCarta(carta);
 				mesa.eliminaImagen(ronda.getListaSeleccionadas());
-			
+				ronda.cambiaTurno();
 			
 		});
 		
