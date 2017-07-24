@@ -16,12 +16,30 @@ public class Ronda {
 	private Baraja baraja= new Baraja();
 	private Juego juego=new Juego();
 	
+	
+	private Jugador jugador1 = new Jugador("Jugador1");
+	private Jugador jugador2 = new Jugador("Jugador2");
+	
 	public Ronda() {
 
 		reparteMano();	
 		daCartasAlMedio();
+		jugador1.setTurno(true);
+		jugador1.setManoActual(mano1);
+		jugador2.setManoActual(mano2);
 	}
-
+	public void cambiaTurno() {
+		boolean turno=jugador1.getTurno();
+		jugador1.setTurno(!turno);
+		jugador2.setTurno(turno);
+	}
+	public Jugador getJugadorActual() {
+		boolean turno=jugador1.getTurno();
+		if(turno) {
+			return jugador1;
+		}
+		return jugador2;
+	}
 	private void daCartasAlMedio() {
 		medio.add(baraja.getCarta());
 		medio.add(baraja.getCarta());
@@ -33,6 +51,8 @@ public class Ronda {
 		mano1= baraja.getMano();
 		mano2= baraja.getMano();
 	}
+
+
 
 	public boolean anhadeCartajug1(ArrayList<Carta> seleccionadas) {
 
@@ -70,16 +90,14 @@ public class Ronda {
 
 	}
 	public boolean puedeSumarCarta(Mano mano) {
-		if(!mano.sePuedeSeleccionarCarta() && seleccionadas.size()!=0 ) {
 		int num = mano.getSeleccionada().getNumero();
 		for(Carta c: seleccionadas) {
 			num=num+c.getNumero();
 		}
 		return num==15;
-		}
-		return false;
+
 	}
-	public int orosJ1() {
+	private int orosJ1() {
 		int oros=0;
 		for(int i=0; i<jug1.size();i++) {
 			if(jug1.get(i).getPalo().equals("ORO")) {
@@ -88,7 +106,7 @@ public class Ronda {
 		}
 		return oros;
 	}
-	public int orosJ2() {
+	private int orosJ2() {
 		int oros=0;
 		for(int i=0; i<jug2.size();i++) {
 			if(jug2.get(i).getPalo().equals("ORO")) {
@@ -98,7 +116,7 @@ public class Ronda {
 		return oros;
 	}
 	
-	public int sietesJ1() {
+	private int sietesJ1() {
 		int sietes=0;
 		for(int i=0; i<jug1.size();i++) {
 			if(jug1.get(i).getNumero()==7) {
@@ -107,7 +125,7 @@ public class Ronda {
 		}
 		return sietes;
 	}
-	public int sietesJ2() {
+	private int sietesJ2() {
 		int sietes=0;
 		for(int i=0; i<jug2.size();i++) {
 			if(jug2.get(i).getNumero()==7) {
@@ -116,7 +134,7 @@ public class Ronda {
 		}
 		return sietes;
 	}
-	public boolean sieteOroJ1() {
+	private boolean sieteOroJ1() {
 		for(int i=0; i<jug1.size();i++) {
 			if(jug1.get(i).getNumero()==7&&jug1.get(i).getPalo().equals("ORO")) {
 				return true;
