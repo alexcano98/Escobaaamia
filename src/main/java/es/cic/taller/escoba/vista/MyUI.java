@@ -34,6 +34,8 @@ public class MyUI extends UI {
          
          pestaña.addTab(pantalla);
          setContent(pestaña);
+         
+        
     	
     }
 
