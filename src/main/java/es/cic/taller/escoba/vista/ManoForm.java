@@ -18,25 +18,31 @@ import es.cic.tallet.escoba.juego.Mano;
 public class ManoForm extends FormLayout {
 	private HorizontalLayout cartas = new HorizontalLayout();
 	
-	private Image imagen1 = new Image();
-	private Image imagen2 = new Image();
-	private Image imagen3 = new Image();
+	private Image imagen1; 
+	private Image imagen2;
+	private Image imagen3; 
 	
 	private Mano mano;
 	
 	public ManoForm(Mano mano) {
 			
 			this.mano = mano;
-			cartas.addComponents(imagen1,imagen2,imagen3);
-			
-			imagen1.addClickListener(new Seleccion());
-			imagen2.addClickListener(new Seleccion());
-			imagen3.addClickListener(new Seleccion());
-			
+			generaImagenes();
+	
 			setMano();
 			addComponents(cartas);
 			this.setSizeFull();
 		
+	}
+
+	private void generaImagenes() {
+		imagen1 = new Image();
+		imagen2 = new Image();
+		imagen3 = new Image();
+		imagen1.addClickListener(new Seleccion());
+		imagen2.addClickListener(new Seleccion());
+		imagen3.addClickListener(new Seleccion());
+		cartas.addComponents(imagen1,imagen2,imagen3);
 	}
 	
 	public void eliminaCarta(Carta carta) {
@@ -60,7 +66,8 @@ public class ManoForm extends FormLayout {
 	}
 	
 	public void setMano() {
-		
+		generaImagenes();
+		cartas.addComponents(imagen1,imagen2,imagen3);
 		cargaCarta(mano.getCarta1(), imagen1);
 		cargaCarta(mano.getCarta2(), imagen2);
 		cargaCarta(mano.getCarta3(), imagen3);

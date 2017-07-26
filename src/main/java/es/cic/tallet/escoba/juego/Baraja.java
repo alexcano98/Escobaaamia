@@ -27,20 +27,19 @@ public class Baraja {
 	
 	public void resetear() {
 		listaCartas.clear();
-		
 		generaBaraja();
 	}
 	
-	public Mano getMano() {
-		Mano mano = new Mano();
+	public void reparteMano(Mano mano) {
+		
 		mano.setCarta1(getCarta());
 		mano.setCarta2(getCarta());
 		mano.setCarta3(getCarta());
-		return mano;
 	}
 	
 	public Carta getCarta() {
-		Carta carta = listaCartas.remove(0);
+		Carta carta = listaCartas.get(0);
+		listaCartas.remove(0);
 		return carta;		
 	}
 	

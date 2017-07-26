@@ -14,19 +14,19 @@ public class Ronda {
 	private ArrayList<Carta> jug2= new ArrayList<Carta>();
 
 	private Baraja baraja= new Baraja();
+	
 	private Juego juego=new Juego();
 	
 	
 	private Jugador jugador1 = new Jugador("Jugador1");
 	private Jugador jugador2 = new Jugador("Jugador2");
 	
+	
 	public Ronda() {
 
 		reparteMano();	
 		daCartasAlMedio();
 		jugador1.setTurno(true);
-		jugador1.setManoActual(mano1);
-		jugador2.setManoActual(mano2);
 	}
 	public void cambiaTurno() {
 		boolean turno=jugador1.getTurno();
@@ -48,8 +48,8 @@ public class Ronda {
 	}
 
 	public void reparteMano() {
-		mano1= baraja.getMano();
-		mano2= baraja.getMano();
+		baraja.reparteMano(mano1);
+		baraja.reparteMano(mano2);
 	}
 
 
@@ -187,5 +187,24 @@ public class Ronda {
 	}
 	public void sumaEscobaJ2() {
 		juego.sumaPuntuacionJugador2(1);
+	}
+	public Jugador getJugador1() {
+		return jugador1;
+	}
+	public void setJugador1(Jugador jugador1) {
+		this.jugador1 = jugador1;
+	}
+	public Jugador getJugador2() {
+		return jugador2;
+	}
+	public void setJugador2(Jugador jugador2) {
+		this.jugador2 = jugador2;
+	}
+	
+	public Baraja getBaraja() {
+	return baraja;
+	}
+	public void setBaraja(Baraja baraja) {
+	this.baraja = baraja;
 	}
 }

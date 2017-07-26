@@ -64,19 +64,11 @@ public class Mano {
 
 	}
 	public void eliminar(Carta carta) {
-		if(carta== carta1)setCarta1(null);
-		if(carta== carta2)setCarta2(null);
-		if(carta== carta3)setCarta3(null);
+		if(carta == carta1)setCarta1(null);
+		if(carta == carta2)setCarta2(null);
+		if(carta == carta3)setCarta3(null);
 	}
 	
-	
-	public boolean puedeRepartir() {
-		if(carta1==null && carta2 ==null && carta3== null) {
-			return true;
-		}
-		return false;
-		
-	}
 	public boolean sePuedeSeleccionarCarta() {
 		boolean seleccionada= true;
 		if(carta1.isSeleccionada()==true)seleccionada=false;
@@ -90,6 +82,13 @@ public class Mano {
 		if(carta2.isSeleccionada()==true)return carta2;
 		if(carta3.isSeleccionada()==true)return carta3;
 		return null;
+	}
+	
+	public boolean isVacia() {
+		if(carta1==null&&carta2==null&&carta3==null) {
+			return true;
+		}
+		return false;
 	}
 	
 	

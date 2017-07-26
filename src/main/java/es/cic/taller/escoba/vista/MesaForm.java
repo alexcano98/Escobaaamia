@@ -43,9 +43,10 @@ public class MesaForm extends FormLayout {
 	
 	}	
 	public void añadeImagen(Carta carta) {
-		imagenes.add(carta.getImagen());
-		imagenes.get(imagenes.size()-1).addClickListener(new Seleccion());
-		this.cartas.addComponent(carta.getImagen());
+		Image imagen = carta.getImagen();
+		imagen.addClickListener(new Seleccion());
+		imagenes.add(imagen);
+		this.cartas.addComponent(imagen);
 		ronda.getCartasMedio().add(carta);
 	}
 	
@@ -108,14 +109,14 @@ public class MesaForm extends FormLayout {
 			
 			if (seleccionar) {
 				ronda.getListaSeleccionadas().add(carta);
-				if(ronda.puedeSumarCarta(ronda.getJugadorActual().getManoActual())) {
+				if(ronda.puedeSumarCarta(ronda.getJugadorActual().getMano().getMano())) {
 					PantallaLayout.getRecojer().setEnabled(true);
 				}else {
 					PantallaLayout.getRecojer().setEnabled(false);
 				}
 			} else {
 				ronda.getListaSeleccionadas().remove(carta);
-				if(ronda.puedeSumarCarta(ronda.getJugadorActual().getManoActual())) {
+				if(ronda.puedeSumarCarta(ronda.getJugadorActual().getMano().getMano())) {
 					PantallaLayout.getRecojer().setEnabled(true);
 			}else {
 				PantallaLayout.getRecojer().setEnabled(false);

@@ -48,21 +48,43 @@ public class PantallaLayout extends GridLayout {
 		acciones.addComponents(recojer,soltar);
 		acciones.setSizeFull();
 		this.setSizeFull();
-		
+		ronda.getJugador1().setManoActual(manoFormJ1);
+		ronda.getJugador2().setManoActual(manoFormJ2);
 		recojer.setEnabled(false);
 		soltar.setEnabled(false);
 		soltar.addClickListener(e ->{
-				Carta carta = ronda.getJugadorActual().getManoActual().getSeleccionada();
-				manoFormJ1.eliminaCarta(carta);
+				Carta carta = ronda.getJugadorActual().getMano().getMano().getSeleccionada();
+				ronda.getJugadorActual().getMano().eliminaCarta(carta);
 				mesa.añadeImagen(carta);
+				
+				if(manoFormJ1.getMano().isVacia() && manoFormJ2.getMano().isVacia()) {
+					if(!ronda.getBaraja().quedanCartas()) {
+						ronda.getBaraja().generaBaraja();
+					}
+					ronda.reparteMano();
+					manoFormJ1.setMano();
+					manoFormJ2.setMano();
+				}
+					
 				ronda.cambiaTurno();
 
 		});
 		
 		recojer.addClickListener(e->{
-				Carta carta = ronda.getJugadorActual().getManoActual().getSeleccionada();
-				manoFormJ1.eliminaCarta(carta);
+				Carta carta = ronda.getJugadorActual().getMano().getMano().getSeleccionada();
+				ronda.getJugadorActual().getMano().eliminaCarta(carta);
+				mesa.añadeImagen(carta);
 				mesa.eliminaImagen(ronda.getListaSeleccionadas());
+				
+				if(manoFormJ1.getMano().isVacia() && manoFormJ2.getMano().isVacia()) {
+					if(!ronda.getBaraja().quedanCartas()) {
+						ronda.getBaraja().generaBaraja();
+					}
+					ronda.reparteMano();
+					manoFormJ1.setMano();
+					manoFormJ2.setMano();
+				}
+				
 				ronda.cambiaTurno();
 			
 		});
