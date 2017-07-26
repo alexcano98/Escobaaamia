@@ -27,7 +27,6 @@ public class ManoForm extends FormLayout {
 	public ManoForm(Mano mano) {
 			
 			this.mano = mano;
-			generaImagenes();
 	
 			setMano();
 			addComponents(cartas);
