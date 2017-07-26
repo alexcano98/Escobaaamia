@@ -1,5 +1,6 @@
 package es.cic.taller.escoba.vista;
 
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.VerticalLayout;
@@ -46,8 +47,10 @@ public class PantallaLayout extends GridLayout {
 		addComponent(mesa,0,1);
 		VerticalLayout acciones = new VerticalLayout();
 		acciones.addComponents(recojer,soltar);
-		acciones.setSizeFull();
+		addComponent(acciones,1,1);
+		this.setComponentAlignment(acciones, Alignment.MIDDLE_RIGHT);
 		this.setSizeFull();
+		
 		ronda.getJugador1().setManoActual(manoFormJ1);
 		ronda.getJugador2().setManoActual(manoFormJ2);
 		recojer.setEnabled(false);
@@ -89,7 +92,6 @@ public class PantallaLayout extends GridLayout {
 			
 		});
 		
-		addComponent(acciones,1,1);
 		
 		
 	}

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ronda {
-	private Mano mano1;
-	private Mano mano2;
+	private Mano mano1= new Mano();
+	private Mano mano2= new Mano();
 
 	private ArrayList<Carta> seleccionadas = new ArrayList<Carta>();
 	private ArrayList<Carta> medio = new ArrayList<Carta>();
