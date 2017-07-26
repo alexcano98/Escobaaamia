@@ -55,18 +55,28 @@ public class PantallaLayout extends GridLayout {
 		ronda.getJugador2().setManoActual(manoFormJ2);
 		recoger.setEnabled(false);
 		soltar.setEnabled(false);
+		
 		soltar.addClickListener(e ->{
 				Carta carta = ronda.getJugadorActual().getMano().getMano().getSeleccionada();
 				ronda.getJugadorActual().getMano().eliminaCarta(carta);
 				mesa.añadeImagen(carta);
 				
 				if(manoFormJ1.getMano().isVacia() && manoFormJ2.getMano().isVacia()) {
+					
 					if(!ronda.getBaraja().quedanCartas()) {
+						
 						ronda.getBaraja().generaBaraja();
-					}
+					 }
+					
 					ronda.reparteMano();
-					manoFormJ1.setMano();
-					manoFormJ2.setMano();
+					
+					ronda.getJugador1().setManoActual(manoFormJ1);
+					ronda.getJugador2().setManoActual(manoFormJ2);
+					
+					manoFormJ1.resetea();
+					manoFormJ2.resetea();
+					
+					
 				}
 					
 				ronda.cambiaTurno();
@@ -84,8 +94,15 @@ public class PantallaLayout extends GridLayout {
 						ronda.getBaraja().generaBaraja();
 					}
 					ronda.reparteMano();
-					manoFormJ1.setMano();
-					manoFormJ2.setMano();
+
+		
+					ronda.getJugador1().setManoActual(manoFormJ1);
+					ronda.getJugador2().setManoActual(manoFormJ2);
+					
+					manoFormJ1.resetea();
+					manoFormJ2.resetea();
+					
+					
 				}
 				
 				ronda.cambiaTurno();

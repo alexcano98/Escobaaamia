@@ -103,6 +103,14 @@ public class ManoForm extends FormLayout {
 		}
 	}
 	
+	public void resetea() {
+		cartas.removeAllComponents();
+		setMano();
+		cartas.addComponents(imagen1,imagen2,imagen3);
+	}
+	
+	
+	
 	class Seleccion implements ClickListener {
 
 		private static final long serialVersionUID = 1097359184957535482L;
