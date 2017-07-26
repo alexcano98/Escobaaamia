@@ -6,7 +6,7 @@ public class Jugador {
 	private String nombre;
 	private ManoForm mano;
 	private boolean turno;
-	private int puntuacion;
+	
 	
 	public Jugador(String nombre) {
 		this.nombre = nombre;
@@ -25,12 +25,6 @@ public class Jugador {
 	}
 	public void setTurno(boolean juega) {
 		turno=juega;
-	}
-	public void sumaPuntos(int i) {
-		puntuacion = puntuacion+i;
-	}
-	public int getPuntos() {
-		return puntuacion;
 	}
 	
 }

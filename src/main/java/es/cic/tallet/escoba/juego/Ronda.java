@@ -90,12 +90,14 @@ public class Ronda {
 
 	}
 	public boolean puedeSumarCarta(Mano mano) {
+		if(!mano.sePuedeSeleccionarCarta()) {
 		int num = mano.getSeleccionada().getNumero();
 		for(Carta c: seleccionadas) {
 			num=num+c.getNumero();
 		}
 		return num==15;
-
+		}
+		return false;
 	}
 	private int orosJ1() {
 		int oros=0;

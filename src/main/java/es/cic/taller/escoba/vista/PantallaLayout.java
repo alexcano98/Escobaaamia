@@ -76,8 +76,8 @@ public class PantallaLayout extends GridLayout {
 		recojer.addClickListener(e->{
 				Carta carta = ronda.getJugadorActual().getMano().getMano().getSeleccionada();
 				ronda.getJugadorActual().getMano().eliminaCarta(carta);
-				mesa.añadeImagen(carta);
 				mesa.eliminaImagen(ronda.getListaSeleccionadas());
+				ronda.getListaSeleccionadas().clear();
 				
 				if(manoFormJ1.getMano().isVacia() && manoFormJ2.getMano().isVacia()) {
 					if(!ronda.getBaraja().quedanCartas()) {
