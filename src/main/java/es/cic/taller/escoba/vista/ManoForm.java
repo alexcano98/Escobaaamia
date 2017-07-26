@@ -49,6 +49,7 @@ public class ManoForm extends FormLayout {
 		this.cartas.getComponent(getIndexImagen(carta)).setVisible(false);
 		this.cartas.removeComponent(carta.getImagen());
 		PantallaLayout.getSoltar().setEnabled(false);
+		mano.eliminar(carta);
 	    
 	}
 	private int getIndexImagen(Carta carta) {

@@ -71,16 +71,16 @@ public class Mano {
 	
 	public boolean sePuedeSeleccionarCarta() {
 		boolean seleccionada= true;
-		if(carta1.isSeleccionada()==true)seleccionada=false;
-		if(carta2.isSeleccionada()==true)seleccionada=false;
-		if(carta3.isSeleccionada()==true)seleccionada=false;
+		if(carta1!= null&&carta1.isSeleccionada()==true)seleccionada=false;
+		if(carta2!= null&&carta2.isSeleccionada()==true)seleccionada=false;
+		if(carta3!= null&&carta3.isSeleccionada()==true)seleccionada=false;
 		return seleccionada;
 	}
 	
 	public Carta getSeleccionada() {
-		if(carta1.isSeleccionada()==true)return carta1;
-		if(carta2.isSeleccionada()==true)return carta2;
-		if(carta3.isSeleccionada()==true)return carta3;
+		if(carta1!= null&&carta1.isSeleccionada()==true)return carta1;
+		if(carta2!= null&&carta2.isSeleccionada()==true)return carta2;
+		if(carta3!= null&&carta3.isSeleccionada()==true)return carta3;
 		return null;
 	}
 	

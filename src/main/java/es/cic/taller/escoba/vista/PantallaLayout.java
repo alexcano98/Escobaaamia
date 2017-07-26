@@ -24,7 +24,7 @@ public class PantallaLayout extends GridLayout {
 	private MyUI myUI;
 	
 	private MesaForm mesa;
-	private static Button recojer = new Button("Recojer");
+	private static Button recoger = new Button("Recoger");
 	private static Button soltar = new Button("Soltar");
 	
 	public PantallaLayout(MyUI myUI) {
@@ -46,14 +46,14 @@ public class PantallaLayout extends GridLayout {
 		addComponent(escobasFormJugador2,1,2);*/
 		addComponent(mesa,0,1);
 		VerticalLayout acciones = new VerticalLayout();
-		acciones.addComponents(recojer,soltar);
+		acciones.addComponents(recoger,soltar);
 		addComponent(acciones,1,1);
 		this.setComponentAlignment(acciones, Alignment.MIDDLE_RIGHT);
 		this.setSizeFull();
 		
 		ronda.getJugador1().setManoActual(manoFormJ1);
 		ronda.getJugador2().setManoActual(manoFormJ2);
-		recojer.setEnabled(false);
+		recoger.setEnabled(false);
 		soltar.setEnabled(false);
 		soltar.addClickListener(e ->{
 				Carta carta = ronda.getJugadorActual().getMano().getMano().getSeleccionada();
@@ -73,7 +73,7 @@ public class PantallaLayout extends GridLayout {
 
 		});
 		
-		recojer.addClickListener(e->{
+		recoger.addClickListener(e->{
 				Carta carta = ronda.getJugadorActual().getMano().getMano().getSeleccionada();
 				ronda.getJugadorActual().getMano().eliminaCarta(carta);
 				mesa.eliminaImagen(ronda.getListaSeleccionadas());
@@ -124,7 +124,7 @@ public class PantallaLayout extends GridLayout {
 		return soltar;
 	}
 	public static Button getRecojer() {
-		return recojer;
+		return recoger;
 	}
 }
 	
