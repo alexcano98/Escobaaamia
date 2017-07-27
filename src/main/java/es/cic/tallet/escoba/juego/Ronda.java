@@ -10,8 +10,7 @@ public class Ronda {
 	private ArrayList<Carta> seleccionadas = new ArrayList<Carta>();
 	private ArrayList<Carta> medio = new ArrayList<Carta>();
 
-	private ArrayList<Carta> jug1= new ArrayList<Carta>();
-	private ArrayList<Carta> jug2= new ArrayList<Carta>();
+	
 
 	private Baraja baraja= new Baraja();
 	
@@ -53,28 +52,6 @@ public class Ronda {
 	}
 
 
-
-	public boolean anhadeCartajug1(ArrayList<Carta> seleccionadas) {
-
-		if(Mano.puedeSumarCarta(seleccionadas)){
-			mano1.eliminar(mano1.estaEnLaMano(seleccionadas));
-			medio.removeAll(seleccionadas);
-			return jug1.addAll(seleccionadas);
-		}
-		return false;
-
-	}
-
-	public boolean anhadeCartajug2(ArrayList<Carta> seleccionadas) {
-		if(Mano.puedeSumarCarta(seleccionadas)) {
-			mano2.eliminar(mano2.estaEnLaMano(seleccionadas));
-			medio.removeAll(seleccionadas);
-			return jug2.addAll(seleccionadas);
-		}
-		return false;
-
-	}
-
 	public List<Carta> getCartasMedio() {
 		return medio;
 	}
@@ -101,8 +78,8 @@ public class Ronda {
 	}
 	private int orosJ1() {
 		int oros=0;
-		for(int i=0; i<jug1.size();i++) {
-			if(jug1.get(i).getPalo().equals("ORO")) {
+		for(int i=0; i<jugador1.getCartas().size();i++) {
+			if(jugador1.getCartas().get(i).getPalo().equals("ORO")) {
 				oros++;
 			}
 		}
@@ -110,8 +87,8 @@ public class Ronda {
 	}
 	private int orosJ2() {
 		int oros=0;
-		for(int i=0; i<jug2.size();i++) {
-			if(jug2.get(i).getPalo().equals("ORO")) {
+		for(int i=0; i<jugador2.getCartas().size();i++) {
+			if(jugador2.getCartas().get(i).getPalo().equals("ORO")) {
 				oros++;
 			}
 		}
@@ -120,8 +97,8 @@ public class Ronda {
 	
 	private int sietesJ1() {
 		int sietes=0;
-		for(int i=0; i<jug1.size();i++) {
-			if(jug1.get(i).getNumero()==7) {
+		for(int i=0; i<jugador1.getCartas().size();i++) {
+			if(jugador1.getCartas().get(i).getNumero()==7) {
 				sietes++;
 			}
 		}
@@ -129,16 +106,16 @@ public class Ronda {
 	}
 	private int sietesJ2() {
 		int sietes=0;
-		for(int i=0; i<jug2.size();i++) {
-			if(jug2.get(i).getNumero()==7) {
+		for(int i=0; i<jugador2.getCartas().size();i++) {
+			if(jugador2.getCartas().get(i).getNumero()==7) {
 				sietes++;
 			}
 		}
 		return sietes;
 	}
 	private boolean sieteOroJ1() {
-		for(int i=0; i<jug1.size();i++) {
-			if(jug1.get(i).getNumero()==7&&jug1.get(i).getPalo().equals("ORO")) {
+		for(int i=0; i<jugador1.getCartas().size();i++) {
+			if(jugador1.getCartas().get(i).getNumero()==7&&jugador1.getCartas().get(i).getPalo().equals("ORO")) {
 				return true;
 			}
 		}
@@ -148,10 +125,10 @@ public class Ronda {
 	public void sumaPuntos() {
 		int puntJ1=0;
 		int puntJ2=0;
-		if(jug1.size()>jug2.size()) {
+		if(jugador1.getCartas().size()>jugador2.getCartas().size()) {
 			puntJ1++;
 		}else {
-			if(jug1.size()<jug2.size()) {
+			if(jugador1.getCartas().size()<jugador2.getCartas().size()) {
 				puntJ2++;
 			}
 		}
@@ -198,6 +175,14 @@ public class Ronda {
 	}
 	public void setJugador2(Jugador jugador2) {
 		this.jugador2 = jugador2;
+	}
+	public void reiniciaRonda() {
+		jugador1.getCartas().clear();
+		jugador2.getCartas().clear();
+	}
+	public void anhadeCArtasJugador(Jugador jugador) {
+		seleccionadas.add(jugador.getMano().getMano().getSeleccionada());
+		jugador.anhadeCartas(seleccionadas);
 	}
 	
 	public Baraja getBaraja() {
