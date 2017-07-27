@@ -53,9 +53,12 @@ public class MesaForm extends FormLayout {
 	public void eliminaImagen(List<Carta> seleccionadas) {
 		for( Carta c: seleccionadas) {
 			estableceDeseleccionado(c);
-			this.cartas.getComponent(getIndexImagen(c)).setVisible(false);
+			int i = getIndexImagen(c);
+			if(i!= -1) {
+			this.cartas.getComponent(i).setVisible(false);
 			this.cartas.removeComponent(c.getImagen());
 			PantallaLayout.getRecojer().setEnabled(false);
+			}
 		}
 	}
 	private int getIndexImagen(Carta carta) {

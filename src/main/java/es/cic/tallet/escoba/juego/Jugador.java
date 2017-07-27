@@ -1,5 +1,6 @@
 package es.cic.tallet.escoba.juego;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import es.cic.taller.escoba.vista.ManoForm;
@@ -9,7 +10,7 @@ public class Jugador {
 	private ManoForm mano;
 	private boolean turno;
 	private int puntos=0;
-	private List<Carta> cartas;
+	private List<Carta> cartas = new ArrayList<Carta>();
 	
 	public int getPuntos() {
 		return puntos;

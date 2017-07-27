@@ -181,8 +181,9 @@ public class Ronda {
 		jugador2.getCartas().clear();
 	}
 	public void anhadeCArtasJugador(Jugador jugador) {
-		seleccionadas.add(jugador.getMano().getMano().getSeleccionada());
-		jugador.anhadeCartas(seleccionadas);
+		List<Carta> robadas = seleccionadas;
+		robadas.add(jugador.getMano().getMano().getSeleccionada());
+		jugador.anhadeCartas(robadas);
 	}
 	
 	public Baraja getBaraja() {
