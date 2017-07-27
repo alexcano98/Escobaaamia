@@ -142,6 +142,16 @@ public class MesaForm extends FormLayout {
 	
 	
 	}
+	public void borrarCartasMedio(List<Carta> seleccionadas) {
+		for( Carta c: seleccionadas) {
+			int i = getIndexImagen(c);
+			if(i!= -1) {
+			this.cartas.getComponent(i).setVisible(false);
+			this.cartas.removeComponent(c.getImagen());
+			PantallaLayout.getRecojer().setEnabled(false);
+			}
+		}
+	}
 	
 }
 

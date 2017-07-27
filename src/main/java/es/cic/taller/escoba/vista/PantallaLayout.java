@@ -70,22 +70,16 @@ public class PantallaLayout extends GridLayout {
 			if(manoFormJ1.getMano().isVacia() && manoFormJ2.getMano().isVacia()) {
 
 				if(isRondaAcabada()) {
-
 					rondaAcabada();
-				}
+				}else {
 
 				ronda.reparteMano();
-
-				ronda.getJugador1().setManoActual(manoFormJ1);
-				ronda.getJugador2().setManoActual(manoFormJ2);
 
 				manoFormJ1.resetea();
 				manoFormJ2.resetea();
 				
-
-
-
 			}
+		}
 
 			ronda.cambiaTurno();
 
@@ -93,31 +87,25 @@ public class PantallaLayout extends GridLayout {
 
 		recoger.addClickListener(e->{
 			ultimoJugador=ronda.getJugadorActual();
-			ronda.anhadeCArtasJugador(ronda.getJugadorActual());
-			Carta carta = ronda.getJugadorActual().getMano().getMano().getSeleccionada();
-			ronda.getJugadorActual().getMano().eliminaCarta(carta);
+			ronda.anhadeCArtasJugador(ultimoJugador);
+			Carta carta = ultimoJugador.getMano().getMano().getSeleccionada();
+			ultimoJugador.getMano().eliminaCarta(carta);
 			mesa.eliminaImagen(ronda.getListaSeleccionadas());
 			ronda.getListaSeleccionadas().clear();
 			if(ronda.hayEscoba()) {
-				ronda.sumaEscoba(ronda.getJugadorActual());
+				ronda.sumaEscoba(ultimoJugador);
 			}
-			juego.setPuntuacionJugador1(ronda.getJugador1().getPuntos());
-			juego.setPuntuacionJugador2(ronda.getJugador2().getPuntos());
 			if(manoFormJ1.getMano().isVacia() && manoFormJ2.getMano().isVacia()) {
 				if(isRondaAcabada()) {
 					rondaAcabada();
-					ronda.reiniciaRonda();
-				}
+				}else {
 				ronda.reparteMano();
-	
-				ronda.getJugador1().setManoActual(manoFormJ1);
-				ronda.getJugador2().setManoActual(manoFormJ2);
 	
 				manoFormJ1.resetea();
 				manoFormJ2.resetea();
 
 
-
+				}
 			}
 
 			ronda.cambiaTurno();
@@ -126,9 +114,13 @@ public class PantallaLayout extends GridLayout {
 
 		nuevaRonda.addClickListener(e->{
 				ronda.reiniciaRonda();
+				mesa = new MesaForm(ronda);
 				ronda.reparteMano();
 
-				mesa = new MesaForm(ronda);});
+				manoFormJ1.resetea();
+				manoFormJ2.resetea();
+		});
+				
 
 	}
 
@@ -168,11 +160,14 @@ public class PantallaLayout extends GridLayout {
 	private void rondaAcabada() {
 		ultimoJugador.anhadeCartas(ronda.getCartasMedio());
 		ronda.sumaPuntos();
+		mesa.borrarCartasMedio(ronda.getCartasMedio());
+		ronda.getCartasMedio().clear();
 		juego.setPuntuacionJugador1(ronda.getJugador1().getPuntos());
-		juego.setPuntuacionJugador1(ronda.getJugador1().getPuntos());
+		juego.setPuntuacionJugador2(ronda.getJugador2().getPuntos());
 		etiqueta.setCaption("Jugador 1:" + ronda.getJugador1().getPuntos()
 					+"Jugador 2:" + ronda.getJugador2().getPuntos());
 		nuevaRonda.setVisible(true);
+	
 	}
 }
 
