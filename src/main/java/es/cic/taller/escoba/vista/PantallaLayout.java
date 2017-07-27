@@ -114,11 +114,14 @@ public class PantallaLayout extends GridLayout {
 
 		nuevaRonda.addClickListener(e->{
 				ronda.reiniciaRonda();
-				mesa = new MesaForm(ronda);
+				ronda.daCartasAlMedio();
+				mesa.resetea();
 				ronda.reparteMano();
 
 				manoFormJ1.resetea();
 				manoFormJ2.resetea();
+				nuevaRonda.setVisible(false);
+				ronda.cambiaTurno();
 		});
 				
 
@@ -167,6 +170,7 @@ public class PantallaLayout extends GridLayout {
 		etiqueta.setCaption("Jugador 1:" + ronda.getJugador1().getPuntos()
 					+"Jugador 2:" + ronda.getJugador2().getPuntos());
 		nuevaRonda.setVisible(true);
+		
 	
 	}
 }

@@ -39,7 +39,7 @@ public class Ronda {
 		}
 		return jugador2;
 	}
-	private void daCartasAlMedio() {
+	public void daCartasAlMedio() {
 		medio.add(baraja.getCarta());
 		medio.add(baraja.getCarta());
 		medio.add(baraja.getCarta());

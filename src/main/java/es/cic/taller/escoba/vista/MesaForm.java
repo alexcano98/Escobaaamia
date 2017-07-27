@@ -28,6 +28,10 @@ public class MesaForm extends FormLayout {
 	public MesaForm(Ronda ronda) {
 		this.ronda = ronda;
 		imagenes = new ArrayList<Image>();
+		setMesa();
+	
+	}
+	private void setMesa() {
 		List<Carta> cartas = ronda.getCartasMedio();
 		for( Carta carta : cartas) {
 			Image imagen = carta.getImagen();
@@ -40,7 +44,6 @@ public class MesaForm extends FormLayout {
 		}
 		addComponents(this.cartas);
 		this.setSizeFull();
-	
 	}	
 	public void añadeImagen(Carta carta) {
 		Image imagen = carta.getImagen();
@@ -151,6 +154,11 @@ public class MesaForm extends FormLayout {
 			PantallaLayout.getRecojer().setEnabled(false);
 			}
 		}
+	}
+	public void  resetea() {
+		imagenes.clear();
+		cartas.removeAllComponents();
+		setMesa();
 	}
 	
 }
