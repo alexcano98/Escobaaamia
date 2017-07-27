@@ -6,12 +6,13 @@ import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.VerticalLayout;
 
 import es.cic.tallet.escoba.juego.Carta;
+import es.cic.tallet.escoba.juego.Juego;
 import es.cic.tallet.escoba.juego.Mano;
 import es.cic.tallet.escoba.juego.Ronda;
 
 public class PantallaLayout extends GridLayout {
-	
-	
+
+
 
 	private ManoForm manoFormJ1;
 	private ManoForm manoFormJ2;
@@ -20,26 +21,26 @@ public class PantallaLayout extends GridLayout {
 	private Ronda ronda = new Ronda();
 	private Mano mano1 = ronda.getMano1();
 	private Mano mano2 = ronda.getMano2();
-	
+	private Juego juego=new Juego();
 	private MyUI myUI;
-	
+
 	private MesaForm mesa;
 	private static Button recoger = new Button("Recoger");
 	private static Button soltar = new Button("Soltar");
-	
+
 	public PantallaLayout(MyUI myUI) {
 		this.myUI = myUI;
-	
-		
-		
+
+
+
 		manoFormJ1 = new ManoForm(mano1);
 		manoFormJ2 = new ManoForm(mano2);
-		
+
 		mesa = new MesaForm(ronda);
-		
+
 		setRows(3);
 		setColumns(2);
-		
+
 		addComponent(manoFormJ1,0,0);
 		addComponent(manoFormJ2,0,2);
 		/*addComponent(escobasFormJugador1,1,0);  // Error: establece valores nulos que no se pueden colocar (Solucionar)
@@ -50,68 +51,89 @@ public class PantallaLayout extends GridLayout {
 		addComponent(acciones,1,1);
 		this.setComponentAlignment(acciones, Alignment.MIDDLE_RIGHT);
 		this.setSizeFull();
-		
+
 		ronda.getJugador1().setManoActual(manoFormJ1);
 		ronda.getJugador2().setManoActual(manoFormJ2);
 		recoger.setEnabled(false);
 		soltar.setEnabled(false);
-		
+
 		soltar.addClickListener(e ->{
-				Carta carta = ronda.getJugadorActual().getMano().getMano().getSeleccionada();
-				ronda.getJugadorActual().getMano().eliminaCarta(carta);
-				mesa.añadeImagen(carta);
-				
-				if(manoFormJ1.getMano().isVacia() && manoFormJ2.getMano().isVacia()) {
-					
-					if(!ronda.getBaraja().quedanCartas()) {
-						
-						ronda.getBaraja().generaBaraja();
-					 }
-					
-				
-					
-					
-					ronda.getJugador1().setManoActual(manoFormJ1);
-					ronda.getJugador2().setManoActual(manoFormJ2);
-					
-					manoFormJ1.resetea();
-					manoFormJ2.resetea();
-					
-					
+			Carta carta = ronda.getJugadorActual().getMano().getMano().getSeleccionada();
+			ronda.getJugadorActual().getMano().eliminaCarta(carta);
+			mesa.añadeImagen(carta);
+
+			if(manoFormJ1.getMano().isVacia() && manoFormJ2.getMano().isVacia()) {
+
+				if(!ronda.getBaraja().quedanCartas()) {
+
+					ronda.getBaraja().generaBaraja();
 				}
-					
-				ronda.cambiaTurno();
+
+				ronda.reparteMano();
+
+				ronda.getJugador1().setManoActual(manoFormJ1);
+				ronda.getJugador2().setManoActual(manoFormJ2);
+
+				manoFormJ1.resetea();
+				manoFormJ2.resetea();
+
+
+				ronda.getJugador1().setManoActual(manoFormJ1);
+				ronda.getJugador2().setManoActual(manoFormJ2);
+
+				manoFormJ1.resetea();
+				manoFormJ2.resetea();
+
+
+
+			}
+
+			ronda.cambiaTurno();
 
 		});
-		
+
 		recoger.addClickListener(e->{
-				Carta carta = ronda.getJugadorActual().getMano().getMano().getSeleccionada();
-				ronda.getJugadorActual().getMano().eliminaCarta(carta);
-				mesa.eliminaImagen(ronda.getListaSeleccionadas());
-				ronda.getListaSeleccionadas().clear();
-				
-				if(manoFormJ1.getMano().isVacia() && manoFormJ2.getMano().isVacia()) {
-					if(!ronda.getBaraja().quedanCartas()) {
-						ronda.getBaraja().generaBaraja();
-					}
-					ronda.reparteMano();
-		
-					ronda.getJugador1().setManoActual(manoFormJ1);
-					ronda.getJugador2().setManoActual(manoFormJ2);
-					
-					manoFormJ1.resetea();
-					manoFormJ2.resetea();	
+			Carta carta = ronda.getJugadorActual().getMano().getMano().getSeleccionada();
+			ronda.getJugadorActual().getMano().eliminaCarta(carta);
+			mesa.eliminaImagen(ronda.getListaSeleccionadas());
+			ronda.getListaSeleccionadas().clear();
+			if(ronda.hayEscoba()) {
+				ronda.sumaEscoba(ronda.getJugadorActual());
+			}
+			juego.setPuntuacionJugador1(ronda.getJugador1().getPuntos());
+			juego.setPuntuacionJugador2(ronda.getJugador2().getPuntos());
+			if(manoFormJ1.getMano().isVacia() && manoFormJ2.getMano().isVacia()) {
+				if(juego.isTerminado()) {
+					recoger.setCaption("se acabo");
 				}
-				
-				ronda.cambiaTurno();
-			
+				ronda.reparteMano();
+
+				ronda.getJugador1().setManoActual(manoFormJ1);
+				ronda.getJugador2().setManoActual(manoFormJ2);
+
+				manoFormJ1.resetea();
+				manoFormJ2.resetea();
+
+
+
+				ronda.getJugador1().setManoActual(manoFormJ1);
+				ronda.getJugador2().setManoActual(manoFormJ2);
+
+				manoFormJ1.resetea();
+				manoFormJ2.resetea();
+
+
+			}
+
+			ronda.cambiaTurno();
+
 		});
-		
-		
-		
+
+
+
 	}
-	
-	
+
+
 	public ManoForm getManoFormJ1() {
 		return manoFormJ1;
 	}
@@ -142,6 +164,6 @@ public class PantallaLayout extends GridLayout {
 		return recoger;
 	}
 }
-	
-	
+
+
 
