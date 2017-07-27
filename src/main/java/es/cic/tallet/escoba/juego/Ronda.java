@@ -174,8 +174,8 @@ public class Ronda {
 		}else {
 			puntJ2++;
 		}
-		juego.sumaPuntuacionJugador1(puntJ1);
-		juego.sumaPuntuacionJugador2(puntJ2);
+		jugador1.sumaPuntos(puntJ1);
+		jugador2.sumaPuntos(puntJ2);
 		
 	}
 	public boolean hayEscoba() {
@@ -184,11 +184,8 @@ public class Ronda {
 		}
 		return false;
 	}
-	public void sumaEscobaJ1() {
-		juego.sumaPuntuacionJugador1(1);
-	}
-	public void sumaEscobaJ2() {
-		juego.sumaPuntuacionJugador2(1);
+	public void sumaEscoba(Jugador jugador) {
+		jugador.sumaPuntos(1);
 	}
 	public Jugador getJugador1() {
 		return jugador1;

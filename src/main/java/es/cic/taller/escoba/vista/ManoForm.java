@@ -148,6 +148,11 @@ public class ManoForm extends FormLayout {
 			mano.getSeleccionada().setSeleccionada(false);
 			
 		}
+		public void resetea() {
+			cartas.removeAllComponents();
+			setMano();
+			cartas.addComponents(imagen1,imagen2,imagen3);
+	}
 		
 
 }
