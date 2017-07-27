@@ -126,9 +126,7 @@ public class PantallaLayout extends GridLayout {
 
 		nuevaRonda.addClickListener(e->{
 				ronda.reiniciaRonda();
-				ronda.getBaraja().generaBaraja();
-				manoFormJ1 = new ManoForm(mano1);
-				manoFormJ2 = new ManoForm(mano2);
+				ronda.reparteMano();
 
 				mesa = new MesaForm(ronda);});
 

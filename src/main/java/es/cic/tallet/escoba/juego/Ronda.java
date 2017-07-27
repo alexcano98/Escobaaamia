@@ -179,6 +179,7 @@ public class Ronda {
 	public void reiniciaRonda() {
 		jugador1.getCartas().clear();
 		jugador2.getCartas().clear();
+		baraja= new Baraja();
 	}
 	public void anhadeCArtasJugador(Jugador jugador) {
 		List<Carta> robadas = seleccionadas;
