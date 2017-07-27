@@ -8,6 +8,7 @@ import com.vaadin.ui.VerticalLayout;
 
 import es.cic.tallet.escoba.juego.Carta;
 import es.cic.tallet.escoba.juego.Juego;
+import es.cic.tallet.escoba.juego.Jugador;
 import es.cic.tallet.escoba.juego.Mano;
 import es.cic.tallet.escoba.juego.Ronda;
 
@@ -25,7 +26,7 @@ public class PantallaLayout extends GridLayout {
 	private Juego juego=new Juego();
 	private MyUI myUI;
 	private Label etiqueta =new Label();
-
+	private Jugador ultimoJugador;
 	private MesaForm mesa;
 	private static Button recoger = new Button("Recoger");
 	private static Button soltar = new Button("Soltar");
@@ -33,7 +34,7 @@ public class PantallaLayout extends GridLayout {
 
 	public PantallaLayout(MyUI myUI) {
 		this.myUI = myUI;
-
+		
 
 
 		manoFormJ1 = new ManoForm(mano1);
@@ -50,7 +51,8 @@ public class PantallaLayout extends GridLayout {
 		addComponent(escobasFormJugador2,1,2);*/
 		addComponent(mesa,0,1);
 		VerticalLayout acciones = new VerticalLayout();
-		acciones.addComponents(recoger,soltar,etiqueta);
+		acciones.addComponents(recoger,soltar,etiqueta, nuevaRonda);
+		nuevaRonda.setVisible(false);
 		addComponent(acciones,1,1);
 		this.setComponentAlignment(acciones, Alignment.MIDDLE_RIGHT);
 		this.setSizeFull();
@@ -90,6 +92,7 @@ public class PantallaLayout extends GridLayout {
 		});
 
 		recoger.addClickListener(e->{
+			ultimoJugador=ronda.getJugadorActual();
 			ronda.anhadeCArtasJugador(ronda.getJugadorActual());
 			Carta carta = ronda.getJugadorActual().getMano().getMano().getSeleccionada();
 			ronda.getJugadorActual().getMano().eliminaCarta(carta);
@@ -106,10 +109,10 @@ public class PantallaLayout extends GridLayout {
 					ronda.reiniciaRonda();
 				}
 				ronda.reparteMano();
-
+	
 				ronda.getJugador1().setManoActual(manoFormJ1);
 				ronda.getJugador2().setManoActual(manoFormJ2);
-
+	
 				manoFormJ1.resetea();
 				manoFormJ2.resetea();
 
@@ -121,7 +124,13 @@ public class PantallaLayout extends GridLayout {
 
 		});
 
+		nuevaRonda.addClickListener(e->{
+				ronda.reiniciaRonda();
+				ronda.getBaraja().generaBaraja();
+				manoFormJ1 = new ManoForm(mano1);
+				manoFormJ2 = new ManoForm(mano2);
 
+				mesa = new MesaForm(ronda);});
 
 	}
 
@@ -159,11 +168,13 @@ public class PantallaLayout extends GridLayout {
 		return !ronda.getBaraja().quedanCartas();
 	}
 	private void rondaAcabada() {
+		ultimoJugador.anhadeCartas(ronda.getCartasMedio());
 		ronda.sumaPuntos();
 		juego.setPuntuacionJugador1(ronda.getJugador1().getPuntos());
 		juego.setPuntuacionJugador1(ronda.getJugador1().getPuntos());
 		etiqueta.setCaption("Jugador 1:" + ronda.getJugador1().getPuntos()
 					+"Jugador 2:" + ronda.getJugador2().getPuntos());
+		nuevaRonda.setVisible(true);
 	}
 }
 
