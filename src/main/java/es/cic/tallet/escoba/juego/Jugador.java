@@ -42,5 +42,9 @@ public class Jugador {
 	public List<Carta> getCartas(){
 		return cartas;
 	}
+	public void finJuego() {
+		puntos=0;
+		cartas = new ArrayList<Carta>();
+	}
 	
 }

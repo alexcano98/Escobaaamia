@@ -54,6 +54,7 @@ public class MesaForm extends FormLayout {
 	}
 	
 	public void eliminaImagen(List<Carta> seleccionadas) {
+		
 		for( Carta c: seleccionadas) {
 			estableceDeseleccionado(c);
 			int i = getIndexImagen(c);
@@ -160,6 +161,26 @@ public class MesaForm extends FormLayout {
 		cartas.removeAllComponents();
 		setMesa();
 	}
+	
+	public boolean hayEscoba() {
+		for(Image i: imagenes) {
+			if(i.isVisible()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	public List<Image> getImagenes(){
+		return imagenes;
+	}
+	public String getL() {
+		if(hayEscoba()) {
+			return "si";
+		}
+		return "no";
+	}
+
+
 	
 }
 

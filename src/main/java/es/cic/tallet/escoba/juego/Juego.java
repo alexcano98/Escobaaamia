@@ -9,22 +9,25 @@ public class Juego {
 	public static int PUNTUACION_MAXIMA = 15;
 
 	public boolean isTerminado() {
-		return puntuacionJugador1 == PUNTUACION_MAXIMA || puntuacionJugador2== PUNTUACION_MAXIMA;
+		return puntuacionJugador1 >= PUNTUACION_MAXIMA || puntuacionJugador2>= PUNTUACION_MAXIMA;
 	}
 
 	public int getPuntuacionJugador1() {
 		return puntuacionJugador1;
 	}
 	public void setPuntuacionJugador1(int puntuacionEquipo1) {
-		this.puntuacionJugador1 = puntuacionEquipo1;
+		this.puntuacionJugador1 = puntuacionEquipo1+this.puntuacionJugador1;
 	}
 	public int getPuntuacionJugador2() {
 		return puntuacionJugador2;
 	}
 	public void setPuntuacionJugador2(int puntuacionEquipo2) {
-		this.puntuacionJugador2 = puntuacionEquipo2;
+		this.puntuacionJugador2 = puntuacionEquipo2+this.puntuacionJugador2;
 	}
-
+	public void nuevoJuego() {
+		puntuacionJugador1=0;
+		puntuacionJugador2=0;
+	}
 	
 	
 
