@@ -4,6 +4,7 @@ import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.VerticalLayout;
 
 import es.cic.tallet.escoba.juego.Carta;
@@ -36,7 +37,7 @@ public class PantallaLayout extends GridLayout {
 	public PantallaLayout(MyUI myUI) {
 		this.myUI = myUI;
 		
-		jugador.setCaption(ronda.getJugadorActual().getNombre());
+		jugador.setCaption("Turno: "+ronda.getJugadorActual().getNombre());
 
 		manoFormJ1 = new ManoForm(mano1);
 		manoFormJ2 = new ManoForm(mano2);
@@ -46,7 +47,7 @@ public class PantallaLayout extends GridLayout {
 		setRows(3);
 		setColumns(2);
 		
-	
+	  
 		addComponent(manoFormJ1,0,0);
 		addComponent(manoFormJ2,0,2);
 		
@@ -90,7 +91,7 @@ public class PantallaLayout extends GridLayout {
 		}
 
 			ronda.cambiaTurno();
-			jugador.setCaption(ronda.getJugadorActual().getNombre());
+			jugador.setCaption("Turno: "+ronda.getJugadorActual().getNombre());
 
 		});
 
@@ -107,6 +108,7 @@ public class PantallaLayout extends GridLayout {
 			if(mesa.hayEscoba()) {
 				
 				ultimoJugador.sumaPuntos(1);
+				Notification.show("¡¡¡¡ESCOBAAA!!!!");
 			}
 			if(manoFormJ1.getMano().isVacia() && manoFormJ2.getMano().isVacia()) {
 				if(isRondaAcabada()) {
@@ -122,7 +124,7 @@ public class PantallaLayout extends GridLayout {
 			}
 
 			ronda.cambiaTurno();
-			jugador.setCaption(ronda.getJugadorActual().getNombre());
+			jugador.setCaption("Turno: "+ronda.getJugadorActual().getNombre());
 
 		});
 
@@ -137,7 +139,7 @@ public class PantallaLayout extends GridLayout {
 				nuevaRonda.setVisible(false);
 				  
 				ronda.cambiaTurno();
-				jugador.setCaption(ronda.getJugadorActual().getNombre());
+				jugador.setCaption("Turno: "+ronda.getJugadorActual().getNombre());
 		});
 				
 
